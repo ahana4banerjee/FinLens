@@ -2,6 +2,8 @@
 
 **FinLens** is a modern MERN + TypeScript finance tracker powered by **Google Gemini AI**. It helps you track expenses/income, scan receipts, import transactions in bulk, and get **AI-driven financial guidance**. With monthly scheduled reports, insights, and intuitive charts — FinLens is your smart money companion.
 
+Deployed Link: https://fin-lens-sooty.vercel.app/
+
 ---
 
 ## 🚀 Features

@@ -25,28 +25,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(passport.initialize());
 
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-
-  const allowed = [
-    "http://localhost:5173",
-    "https://fin-lens-sooty.vercel.app"
-  ];
-
-  if (allowed.includes(origin as string)) {
-    res.setHeader("Access-Control-Allow-Origin", origin as string);
-  }
-
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-
-  next();
-});
+app.use(
+  cors({
+    origin: Env.FRONTEND_ORIGIN,
+    credentials: true,
+  })
+);
 
 
 app.get(

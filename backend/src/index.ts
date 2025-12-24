@@ -25,10 +25,23 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(passport.initialize());
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fin-lens-sooty.vercel.app"
+];
+
 app.use(
   cors({
-    origin: Env.FRONTEND_ORIGIN,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS blocked: " + origin));
+      }
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 

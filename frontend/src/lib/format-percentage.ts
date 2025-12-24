@@ -11,7 +11,7 @@ export const formatPercentage = (
   if (typeof value !== "number" || isNaN(value)) return "0%";
     
   const absValue = Math.abs(value);
-  const formatted = new Intl.NumberFormat("en-US", {
+  const formatted = new Intl.NumberFormat("en-IN", {
     style: "percent",
     minimumFractionDigits: decimalPlaces,
     maximumFractionDigits: decimalPlaces,
